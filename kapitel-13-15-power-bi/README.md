@@ -20,7 +20,14 @@ psql -d zahlen_die_stimmen -f kapitel-12-sql-modelle/12-02-aenderung-v1-1.sql
 3. Unter **Transformieren → Parameter bearbeiten** prüfen:
    - `Server`: voreingestellt `localhost:5432`; anpassen, wenn Ihr PostgreSQL einen anderen Port verwendet
    - `Database`: voreingestellt `zahlen_die_stimmen`
-4. **Aktualisieren** wählen und die Anmeldedaten Ihrer PostgreSQL-Datenbank eingeben.
+4. **Aktualisieren** wählen und die Anmeldedaten Ihrer PostgreSQL-Datenbank eingeben (Datenbank-Anmeldung, etwa Benutzer `postgres`).
+
+Bei der ersten Aktualisierung fragt Power BI zweimal nach:
+
+- **„Native Datenbankabfrage“**: Zwei Tabellen lesen ihre Daten mit einer SQL-Abfrage, die Zeitangaben nach UTC umrechnet. Mit **Ausführen** genehmigen.
+- **„Verschlüsselungsunterstützung“**: Eine lokale PostgreSQL-Installation bietet meist keine verschlüsselte Verbindung an. Für die Datenbank auf dem eigenen Rechner mit **OK** unverschlüsselt verbinden.
+
+Öffnet Power BI nach dem Laden eine Startansicht, führt **Esc** oder ein Klick auf die Berichtsansicht links zurück zur Seite.
 
 Danach zeigt die Seite die Werte aus Kapitel 15: vier Bestellungen mit 1.000 EUR, mittlere Bearbeitungsdauer 75 Minuten, Bestandsbewertung 1 von 2 Zeilen, bekannter Teilwert 1.000 EUR, vollständiger Wert unbekannt.
 

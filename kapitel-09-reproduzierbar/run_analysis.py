@@ -44,7 +44,7 @@ def main(config_file):
              input_dir / "products.csv", input_dir / "warehouses.csv", orders_file]
     bindings = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in files}
     def git(*args):
-        return subprocess.check_output(["git", *args], cwd=HERE, text=True).strip()
+        return subprocess.check_output(["git", *args], cwd=HERE, text=True, stderr=subprocess.DEVNULL).strip()
     code_paths = [str(path) for path in files[:4]]
     try:
         commit = git("rev-parse", "HEAD")

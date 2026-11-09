@@ -1,7 +1,7 @@
 -- Kapitel 11 · Analytische Datenmodelle und gemeinsame Kennzahlen
 -- Legt das kleine Star Schema in SQLite an (Dimensionen, Bestell-Fact, Bestands-Fact).
--- Aufruf im Kapitelordner:  sqlite3 modell.db < 11-00-modell.sql
--- Danach z. B.:  sqlite3 modell.db < 11-01-...sql
+-- Aufruf im Kapitelordner:  sqlite3 modell.db ".read 11-00-modell.sql"
+-- Danach:  sqlite3 modell.db ".read 11-01-den-falschen-direktjoin-nachvollziehen.sql"
 
 CREATE TABLE customer_dimension(customer_id TEXT NOT NULL PRIMARY KEY, customer_name TEXT NOT NULL);
 INSERT INTO "customer_dimension" VALUES('101','Müller GmbH');
