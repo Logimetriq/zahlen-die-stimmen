@@ -1,0 +1,37 @@
+{
+  "source_commit": "f9fffe311c5df0756377aa9233da46cecd8bcdf1",
+  "cutoff": "2026-09-15T06:00:00Z",
+  "sql_source": "code/sql/b2b-operations-v1/setup.sql",
+  "sql_sha256": "8724e9148b46cb2914545a52875e5c9d1c2c63130aac3d93d8252b05989d614b",
+  "raw_sha256": {
+    "customers.csv": "31da2bc08bb5fe414e059d962750e237800732ee6b8c188b8c170f22706e006a",
+    "inventory_snapshots.csv": "2eaa2fa2aaffdcfa95f2a363a6719ba2352f1ccff625a88cd3b29bba12ffdaf9",
+    "order_entry_versions.csv": "d945174aa6945f4ac604c028de8583c964e4f2634f30ad888a5c714630c20825",
+    "order_revisions.csv": "fc47d87b7615767036958aea2e6a1b5ffad5320c07f04e8cb83d487b9a15b521",
+    "product_price_revisions.csv": "fd6346ba08261f904f3057fbaa117d23b418e5aa124013ba460bc0180b98f4fc",
+    "products.csv": "5621f5919160149fe160b550265c8fd4f13132a0e574468de8d864ede0155100",
+    "warehouses.csv": "82680fc01d67bc48ba8069714dd62f7cc092d1ca4781b755b9e8167c5cb814f2"
+  },
+  "hash_policy": "Canonical LF only when Git clean conversion confirms text EOL identity; actual checkout hashes recorded separately.",
+  "raw_checkout_sha256": {
+    "customers.csv": "facb16bdd8fb153d630de018984c1f19677e55761d09e4306b25a7749e8e9c90",
+    "inventory_snapshots.csv": "19cfd9bfe9f1d975ea634fd8919479c6fbb7c96d1e578c6873852519f8146bc2",
+    "order_entry_versions.csv": "3633ba31e0cf5d3cb2b0b35026d7d9ddb9f8e2cda9d297162bf394ca0aaeb651",
+    "order_revisions.csv": "0c63cec00bb0825e6611d07618ba0a9e684339708d3a8ff03a447d65cb158872",
+    "product_price_revisions.csv": "1658ba732ab0d1d8e0b54be150064ac2825b19c902c2e4459e3cb33b40ef12ec",
+    "products.csv": "e99a303fee687c0f9be41d01a20e60b1a0685e4eaf4c5a75c5a3b9d3120989a5",
+    "warehouses.csv": "787f520892478c499d95f2d9a50d9086e3f6ed69c548faad735e6377dc21c6a9"
+  },
+  "prepared_sha256": {
+    "orders.csv": "fc47d87b7615767036958aea2e6a1b5ffad5320c07f04e8cb83d487b9a15b521",
+    "inventory_overview.csv": "249416a105d911332c3cfdaf4f858dd85035185409611ae5ca6d2bbf8dbeae06",
+    "checks/orders_decimal_comma.csv": "028512dfe1d8b37d5fe2c67b561ee7f6e0ec1935e8045569b3e6414866d05b2b"
+  },
+  "orders_preparation": "Byte-identical order_revisions.csv copy, SQL orders view row/field/instant equivalence executed.",
+  "inventory_query": "COPY (SELECT warehouse_id, product_id, snapshot_date, quantity, price, inventory_value_eur FROM b2b.inventory_overview ORDER BY warehouse_id, product_id) TO STDOUT WITH CSV HEADER",
+  "orders_query": "COPY (SELECT * FROM b2b.orders ORDER BY order_id) TO STDOUT WITH CSV HEADER",
+  "postgres": "16.10 (Debian 16.10-1.pgdg13+1)",
+  "image": "postgres@sha256:21f6013073bc6b92830a2129570e2f5ec42a6c734b5a985a41e83aa58f54c3c1",
+  "result": "PASS",
+  "method": "Fresh --network none container, no ports, no persistent volumes; removed after execution."
+}

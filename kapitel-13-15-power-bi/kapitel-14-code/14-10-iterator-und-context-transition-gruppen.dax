@@ -1,0 +1,3 @@
+// Kapitel 14 · Abschnitt „Iterator und Context Transition: Gruppen gewichtet zusammenführen“ · Codeblock 10
+
+CALCULATE(COUNT('m04 fact_orders'[duration_min]))

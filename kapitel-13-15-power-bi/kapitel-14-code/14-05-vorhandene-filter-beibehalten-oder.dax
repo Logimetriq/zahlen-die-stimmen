@@ -1,0 +1,10 @@
+// Kapitel 14 · Abschnitt „Vorhandene Filter beibehalten oder ersetzen“ · Codeblock 5
+
+Bestellungen über 60 Minuten =
+COALESCE(
+    CALCULATE(
+        COUNT('m04 fact_orders'[duration_min]),
+        KEEPFILTERS('m04 fact_orders'[duration_min] > 60)
+    ),
+    0
+)

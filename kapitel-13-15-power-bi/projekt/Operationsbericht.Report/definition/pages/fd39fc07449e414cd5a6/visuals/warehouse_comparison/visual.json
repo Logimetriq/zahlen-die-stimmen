@@ -1,0 +1,279 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "warehouse_comparison",
+  "position": {
+    "x": 20,
+    "y": 620,
+    "z": 0,
+    "height": 200,
+    "width": 1400,
+    "tabOrder": 6220
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 dim_warehouse"
+                    }
+                  },
+                  "Property": "warehouse_name"
+                }
+              },
+              "queryRef": "m04 dim_warehouse.warehouse_name",
+              "nativeQueryRef": "Lager",
+              "displayName": "Lager"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Bestellanzahl"
+                }
+              },
+              "queryRef": "m04 fact_orders.Bestellanzahl",
+              "nativeQueryRef": "Bestellanzahl",
+              "displayName": "Bestellanzahl"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Bestellbetrag"
+                }
+              },
+              "queryRef": "m04 fact_orders.Bestellbetrag",
+              "nativeQueryRef": "Bestellbetrag",
+              "displayName": "Bestellbetrag"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Mittlere Bearbeitungsdauer"
+                }
+              },
+              "queryRef": "m04 fact_orders.Mittlere Bearbeitungsdauer",
+              "nativeQueryRef": "Mittlere Bearbeitungsdauer",
+              "displayName": "Mittlere Bearbeitungsdauer"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Verzögerungsquote"
+                }
+              },
+              "queryRef": "m04 fact_orders.Verzögerungsquote",
+              "nativeQueryRef": "Verzögerungsquote",
+              "displayName": "Verzögerungsquote"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_inventory_snapshots"
+                    }
+                  },
+                  "Property": "Bewertungsabdeckung"
+                }
+              },
+              "queryRef": "m04 fact_inventory_snapshots.Bewertungsabdeckung",
+              "nativeQueryRef": "Bewertungsabdeckung",
+              "displayName": "Bewertungsabdeckung"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Lagervergleich – Dauer und Quote beziehen sich auf bekannte Dauern'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9eb66b0ed83b5861be2b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 dim_warehouse"
+              }
+            },
+            "Property": "warehouse_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0f468ca5af4cd49a9075",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_orders"
+              }
+            },
+            "Property": "Bestellanzahl"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fe33016e673adef018b8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_orders"
+              }
+            },
+            "Property": "Bestellbetrag"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b2880f36d616982c6afb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_orders"
+              }
+            },
+            "Property": "Mittlere Bearbeitungsdauer"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8a33c59a874441979b45",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_orders"
+              }
+            },
+            "Property": "Verzögerungsquote"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f34eb55ddf0c85c38e37",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_inventory_snapshots"
+              }
+            },
+            "Property": "Bewertungsabdeckung"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

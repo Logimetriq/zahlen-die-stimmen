@@ -1,0 +1,6 @@
+// Kapitel 14 · Abschnitt „Iterator und Context Transition: Gruppen gewichtet zusammenführen“ · Codeblock 8
+
+AVERAGEX(
+    VALUES('m04 dim_product'[product_id]),
+    [Mittlere Bearbeitungsdauer]
+)

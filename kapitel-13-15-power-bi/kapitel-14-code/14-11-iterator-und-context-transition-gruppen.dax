@@ -1,0 +1,11 @@
+// Kapitel 14 · Abschnitt „Iterator und Context Transition: Gruppen gewichtet zusammenführen“ · Codeblock 11
+
+Mittlere Dauer gewichtet =
+DIVIDE(
+    SUMX(
+        VALUES('m04 dim_product'[product_id]),
+        [Mittlere Bearbeitungsdauer]
+            * CALCULATE(COUNT('m04 fact_orders'[duration_min]))
+    ),
+    COUNT('m04 fact_orders'[duration_min])
+)

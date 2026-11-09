@@ -1,0 +1,192 @@
+table 'm04 fact_orders'
+	lineageTag: 09c5c9a1-3a56-4be8-b2d7-0080a745e194
+
+	measure Bestellanzahl = COALESCE(COUNTROWS('m04 fact_orders'), 0)
+		formatString: 0
+		displayFolder: CH14\Berechnungen
+		lineageTag: 6771bf7c-30c8-5d1d-9e35-ca4d64c67cee
+
+	measure Bestellbetrag = IF(COUNTROWS('m04 fact_orders') = 0, 0, IF(COUNT('m04 fact_orders'[order_amount_eur]) = COUNTROWS('m04 fact_orders') && SELECTEDVALUE('m04 fact_orders'[currency]) = "EUR", SUM('m04 fact_orders'[order_amount_eur]), BLANK()))
+		formatString: #,0.00 "EUR"
+		displayFolder: CH14\Berechnungen
+		lineageTag: 03bd2a5d-5f47-5388-b997-9708847b6e86
+
+	measure 'Bearbeitungsdauer gesamt' = SUM('m04 fact_orders'[duration_min])
+		formatString: 0.00 "min"
+		displayFolder: CH14\Berechnungen
+		lineageTag: 7b5b24eb-5d06-5cb0-93b3-ade98ca30717
+
+	measure 'Mittlere Bearbeitungsdauer' = DIVIDE([Bearbeitungsdauer gesamt], COUNT('m04 fact_orders'[duration_min]))
+		formatString: 0.00 "min"
+		displayFolder: CH14\Berechnungen
+		lineageTag: da1a3691-4489-575c-8390-83c61d492232
+
+	measure 'Bestellungen über 60 Minuten' = COALESCE(CALCULATE(COUNT('m04 fact_orders'[duration_min]), KEEPFILTERS('m04 fact_orders'[duration_min] > 60)), 0)
+		formatString: 0
+		displayFolder: CH14\Berechnungen
+		lineageTag: 0ae7f2fa-2a69-5fdb-929c-ed3df2f80b23
+
+	measure Verzögerungsquote = DIVIDE([Bestellungen über 60 Minuten], COUNT('m04 fact_orders'[duration_min]))
+		formatString: 0.00%
+		displayFolder: CH14\Berechnungen
+		lineageTag: 43c64970-cc88-5905-8999-88ad2a3bad24
+
+	measure 'Mittlere Dauer gewichtet' = DIVIDE(SUMX(VALUES('m04 dim_product'[product_id]), [Mittlere Bearbeitungsdauer] * CALCULATE(COUNT('m04 fact_orders'[duration_min]))), COUNT('m04 fact_orders'[duration_min]))
+		formatString: 0.00 "min"
+		displayFolder: CH14\Berechnungen
+		lineageTag: e87c5b58-244c-526a-b810-5bec553e5121
+
+	measure 'Bestellbetrag nach Abschluss' = CALCULATE([Bestellbetrag], USERELATIONSHIP('m04 fact_orders'[processed_date], 'm04 dim_date'[calendar_date]))
+		formatString: #,0.00 "EUR"
+		displayFolder: CH14\Berechnungen
+		lineageTag: 863fbcc1-a2cb-5e2a-a488-886ea03e947b
+
+	measure Reportstand = "Quelle: SQL-M04 1.1 / CH11-V1 | Kenntnis: 15.09.2026 06:00 UTC | Report/Modell: 3.0 | Geprüfter Import: 08.10.2026 17:11:41 UTC (kontrollierter Stand)"
+		displayFolder: Reportdarstellung
+		lineageTag: 36a86f0b-c2a5-4c05-ab4f-0d26fc7cf41f
+
+	column order_id
+		dataType: string
+		lineageTag: 95b740f1-cd1f-462c-a5da-d144f42831ee
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column revision_id
+		dataType: string
+		lineageTag: e13ead3e-5ece-46dd-bdc0-15c11c9791e7
+		summarizeBy: none
+		sourceColumn: revision_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 886ee0dd-03c0-4f60-be07-13ab739672ba
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column warehouse_id
+		dataType: string
+		lineageTag: 8e3c4093-a96d-48f6-a6d8-b2492ee8f3ab
+		summarizeBy: none
+		sourceColumn: warehouse_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 35d07cf7-19b5-43f9-b482-5e9bee40d895
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_amount_eur
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: ab58c310-1a58-4052-a57f-def0e1de3ec6
+		summarizeBy: sum
+		sourceColumn: order_amount_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column currency
+		dataType: string
+		lineageTag: fcc9d979-f20e-4f8f-b845-490717c3b3a5
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b7a42a50-b0f1-4b41-87a2-f9d2616ee263
+		summarizeBy: none
+		sourceColumn: event_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 709fcfcb-b29c-4a2a-8519-7a19ae527501
+		summarizeBy: none
+		sourceColumn: received_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b98bd5e9-8301-41b9-ba0e-1284d35bcefa
+		summarizeBy: none
+		sourceColumn: processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column available_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a0bbdbe7-1139-4bd2-9e63-6e7f780c90bf
+		summarizeBy: none
+		sourceColumn: available_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column processing_group
+		dataType: string
+		lineageTag: fa76806b-eb2c-4fc1-b0e8-7cb8f05e7277
+		summarizeBy: none
+		sourceColumn: processing_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d3e91ced-01cc-47ec-99ae-0f05e90b6417
+		summarizeBy: none
+		sourceColumn: received_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column processed_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cc93ea44-84b1-40be-854d-cc2673182e9a
+		summarizeBy: none
+		sourceColumn: processed_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column duration_min
+		dataType: double
+		lineageTag: 551cdcf1-651b-459b-9bdb-3b79c2718056
+		summarizeBy: sum
+		sourceColumn: duration_min
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'm04 fact_orders' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database, [Query = "SELECT order_id, revision_id, customer_id, warehouse_id, product_id, order_amount_eur, currency, event_at AT TIME ZONE 'UTC' AS event_at, received_at AT TIME ZONE 'UTC' AS received_at, processed_at AT TIME ZONE 'UTC' AS processed_at, available_at AT TIME ZONE 'UTC' AS available_at, processing_group, received_date, processed_date, duration_min FROM m04.fact_orders"]),
+				    Auswahl = Table.SelectColumns(Quelle, {"order_id", "revision_id", "customer_id", "warehouse_id", "product_id", "order_amount_eur", "currency", "event_at", "received_at", "processed_at", "available_at", "processing_group", "received_date", "processed_date", "duration_min"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"order_id", type text}, {"revision_id", type text}, {"customer_id", type text}, {"warehouse_id", type text}, {"product_id", type text}, {"order_amount_eur", Currency.Type}, {"currency", type text}, {"event_at", type datetime}, {"received_at", type datetime}, {"processed_at", type datetime}, {"available_at", type datetime}, {"processing_group", type text}, {"received_date", type date}, {"processed_date", type date}, {"duration_min", type number}})
+				in
+				    Typen
+

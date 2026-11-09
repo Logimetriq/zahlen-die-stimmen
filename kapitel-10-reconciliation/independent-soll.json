@@ -1,0 +1,17 @@
+{
+  "origin": "Manuell festgeschrieben aus book/running-case.md Kleiner Referenzfall und CH03 Preisprüfung; keine Ausgabe der Transformationen",
+  "contract": {"population":"four_reference_orders", "grain":"order_id", "key_meaning":"business_order", "business_date":"2026-09-14", "cutoff":"2026-09-15T06:00:00Z", "currency":"EUR", "unit":"EUR", "scaling":"1", "metric":"order_amount_eur"},
+  "references": {"customer_id":["101","102"], "warehouse_id":["301","302"], "product_id":["201","202"]},
+  "orders": [
+    {"order_id":"4711", "revision_id":"1", "customer_id":"101", "warehouse_id":"301", "product_id":"201", "order_amount_eur":"100.00", "currency":"EUR", "duration_min":"30.00"},
+    {"order_id":"4712", "revision_id":"1", "customer_id":"102", "warehouse_id":"301", "product_id":"201", "order_amount_eur":"200.00", "currency":"EUR", "duration_min":"90.00"},
+    {"order_id":"4713", "revision_id":"1", "customer_id":"101", "warehouse_id":"302", "product_id":"202", "order_amount_eur":"300.00", "currency":"EUR", "duration_min":"60.00"},
+    {"order_id":"4714", "revision_id":"1", "customer_id":"102", "warehouse_id":"302", "product_id":"201", "order_amount_eur":"400.00", "currency":"EUR", "duration_min":"120.00"}
+  ],
+  "inventory_contract": {"population":"two_reference_inventory_rows", "grain":"warehouse_id/product_id/snapshot_date", "key_meaning":"warehouse_product_day", "business_date":"2026-09-14", "cutoff":"2026-09-15T06:00:00Z", "currency":"EUR", "unit":"pieces;EUR_per_piece;EUR", "scaling":"1", "metric":"inventory_value_eur"},
+  "inventory": [
+    {"warehouse_id":"301", "product_id":"201", "snapshot_date":"2026-09-14", "quantity":"10", "currency":"EUR", "price":"100.00", "value_eur":"1000.00"},
+    {"warehouse_id":"302", "product_id":"202", "snapshot_date":"2026-09-14", "quantity":"5", "currency":"EUR", "price":null, "value_eur":null}
+  ],
+  "aggregate": {"order_count":4, "order_sum_eur":"1000.00", "warehouse_sums":{"301":"300.00","302":"700.00"}, "inventory_rows":2, "valued_rows":1, "known_value_eur":"1000.00", "full_value_eur":null}
+}

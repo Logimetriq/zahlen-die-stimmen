@@ -1,0 +1,33 @@
+table 'm04 dim_date'
+	lineageTag: 9aabaed6-2c4e-470a-9722-48d79f618b36
+
+	column calendar_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b29afc5a-f3e6-400c-9d93-f42e3c196c21
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column calendar_month
+		dataType: string
+		lineageTag: 34f44716-e195-4d2b-a51f-89790fa7eada
+		summarizeBy: none
+		sourceColumn: calendar_month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 dim_date' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database),
+				    Tabelle = Quelle{[Schema = "m04", Item = "dim_date"]}[Data],
+				    Auswahl = Table.SelectColumns(Tabelle, {"calendar_date", "calendar_month"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"calendar_date", type date}, {"calendar_month", type text}})
+				in
+				    Typen
+

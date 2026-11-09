@@ -1,0 +1,9 @@
+role OPS_FRANKFURT
+	modelPermission: read
+
+	tablePermission 'm04 dim_warehouse' = 'm04 dim_warehouse'[warehouse_id] = "301"
+
+	tablePermission 'm04 quality_status' = 'm04 quality_status'[warehouse_id] = "301"
+
+	annotation PBI_Id = 7dc5b78f32484241884ccbd3d12de938
+

@@ -1,0 +1,7 @@
+# Zahlen, die stimmen – Python-Umgebung für die Kapitel 7 bis 10
+# Geprüft mit Python 3.14. Installation:  python -m pip install -r requirements.txt
+pandas==2.3.3
+numpy==2.4.2
+matplotlib==3.11.2
+jupyterlab==4.6.4
+ipykernel==7.4.0

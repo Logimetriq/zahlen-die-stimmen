@@ -1,0 +1,33 @@
+// Kapitel 15 · Abschnitt „Kennzahlen und Details der Reportseite aufbauen“ · Codeblock 1
+
+Bewertungsumfang =
+IF(
+    ISBLANK([Bestandsbeobachtungen]),
+    "Stichtag nicht eindeutig",
+    IF(
+        [Bestandsbeobachtungen] = 0,
+        "Keine Bestandsbeobachtung; Abdeckung nicht definiert",
+        FORMAT([Bewertete Bestandsbeobachtungen], "0") & " von "
+            & FORMAT([Bestandsbeobachtungen], "0")
+            & " beobachteten Zeilen bewertet; "
+            & IF(
+                [Bewertete Bestandsbeobachtungen] = [Bestandsbeobachtungen],
+                "COMPLETE für beobachtete Auswahl",
+                "LIMITED für beobachtete Auswahl"
+            )
+    )
+)
+
+Bekannter Wert Anzeige =
+IF(
+    ISBLANK([Bekannter Bestandswert]),
+    "Bekannter Wert: unbekannt",
+    "Bekannter Wert: " & FORMAT([Bekannter Bestandswert], "#,0.00") & " EUR"
+)
+
+Vollwert Anzeige =
+IF(
+    ISBLANK([Vollständiger Bestandswert]),
+    "Vollständiger Wert: unbekannt",
+    "Vollständiger Wert: " & FORMAT([Vollständiger Bestandswert], "#,0.00") & " EUR"
+)

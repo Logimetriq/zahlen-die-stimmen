@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "stock_summary",
+  "position": {
+    "x": 20,
+    "y": 450,
+    "z": 0,
+    "height": 160,
+    "width": 1400,
+    "tabOrder": 4520
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_inventory_snapshots"
+                    }
+                  },
+                  "Property": "Bewertungsumfang"
+                }
+              },
+              "queryRef": "m04 fact_inventory_snapshots.Bewertungsumfang",
+              "nativeQueryRef": "Bewertungsumfang",
+              "displayName": "Bewertungsumfang"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_inventory_snapshots"
+                    }
+                  },
+                  "Property": "Bekannter Wert Anzeige"
+                }
+              },
+              "queryRef": "m04 fact_inventory_snapshots.Bekannter Wert Anzeige",
+              "nativeQueryRef": "Bekannter Wert Anzeige",
+              "displayName": "Bekannter Wert Anzeige"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_inventory_snapshots"
+                    }
+                  },
+                  "Property": "Vollwert Anzeige"
+                }
+              },
+              "queryRef": "m04 fact_inventory_snapshots.Vollwert Anzeige",
+              "nativeQueryRef": "Vollwert Anzeige",
+              "displayName": "Vollwert Anzeige"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bewertung der beobachteten Bestände am 14.09.2026'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7be6fac150a0f7b563fd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_inventory_snapshots"
+              }
+            },
+            "Property": "Bewertungsumfang"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "19f53a963a208dbb330e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_inventory_snapshots"
+              }
+            },
+            "Property": "Bekannter Wert Anzeige"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "104c6f6557fb8f4170ca",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "m04 fact_inventory_snapshots"
+              }
+            },
+            "Property": "Vollwert Anzeige"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

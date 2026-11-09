@@ -1,0 +1,6 @@
+// Kapitel 14 · Abschnitt „Time Intelligence mit einem geeigneten Kalender“ · Codeblock 16
+
+TOTALMTD(
+    [Bestellbetrag],
+    'm04 dim_date'[calendar_date]
+)

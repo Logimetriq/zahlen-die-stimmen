@@ -1,0 +1,19 @@
+// Kapitel 15 · Abschnitt „Kennzahlen und Details der Reportseite aufbauen“ · Codeblock 2
+
+Beobachtete Stück =
+IF(
+    [Bestandsbeobachtungen] > 0,
+    SUM('m04 fact_inventory_snapshots'[quantity]),
+    BLANK()
+)
+
+Bewertung Detail =
+IF(
+    [Bestandsbeobachtungen] > 0,
+    IF(
+        [Bewertete Bestandsbeobachtungen] = [Bestandsbeobachtungen],
+        "Bewertet: " & FORMAT([Bekannter Bestandswert], "#,0.00") & " EUR",
+        "Preis fehlt; Wert unbekannt"
+    ),
+    BLANK()
+)
