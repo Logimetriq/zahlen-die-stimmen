@@ -1,0 +1,4 @@
+// Kapitel 14 · Abschnitt „Measures: eine Berechnung für wechselnde Auswahlen“ · Codeblock 1
+
+Bestellbetrag zum Einstieg =
+SUM('m04 fact_orders'[order_amount_eur])

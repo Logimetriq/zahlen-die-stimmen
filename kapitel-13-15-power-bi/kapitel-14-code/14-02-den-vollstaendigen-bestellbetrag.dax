@@ -1,0 +1,15 @@
+// Kapitel 14 · Abschnitt „Den vollständigen Bestellbetrag zusammensetzen“ · Codeblock 2
+
+Bestellbetrag =
+IF(
+    COUNTROWS('m04 fact_orders') = 0,
+    0,
+    IF(
+        COUNT('m04 fact_orders'[order_amount_eur])
+            = COUNTROWS('m04 fact_orders')
+            && SELECTEDVALUE('m04 fact_orders'[currency])
+                = "EUR",
+        SUM('m04 fact_orders'[order_amount_eur]),
+        BLANK()
+    )
+)

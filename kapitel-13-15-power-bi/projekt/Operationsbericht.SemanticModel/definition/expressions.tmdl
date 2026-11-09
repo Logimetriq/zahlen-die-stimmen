@@ -1,0 +1,10 @@
+expression Server = "localhost:5432" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: cc6292d8-68e5-532e-8c47-c57cd7f2dd72
+
+	annotation PBI_ResultType = Text
+
+expression Database = "zahlen_die_stimmen" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 98fac126-beb6-50c7-9880-7df352696e41
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,10 @@
+// Kapitel 14 · Abschnitt „Mittelwerte und Quoten im Gesamtkontext neu berechnen“ · Codeblock 6
+
+Bearbeitungsdauer gesamt =
+SUM('m04 fact_orders'[duration_min])
+
+Mittlere Bearbeitungsdauer =
+DIVIDE(
+    [Bearbeitungsdauer gesamt],
+    COUNT('m04 fact_orders'[duration_min])
+)

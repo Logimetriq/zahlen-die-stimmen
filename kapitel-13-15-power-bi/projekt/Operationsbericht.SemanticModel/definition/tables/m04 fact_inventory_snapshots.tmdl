@@ -1,0 +1,134 @@
+table 'm04 fact_inventory_snapshots'
+	lineageTag: 69702784-cd6b-4c12-83ab-f06192e09515
+
+	measure Bestandsbeobachtungen = IF(HASONEVALUE('m04 dim_date'[calendar_date]), COALESCE(COUNTROWS('m04 fact_inventory_snapshots'), 0), BLANK())
+		formatString: 0
+		displayFolder: CH14\Berechnungen
+		lineageTag: 10c6267d-36bd-55f1-b9a8-7fa3def805b9
+
+	measure 'Bewertete Bestandsbeobachtungen' = IF(HASONEVALUE('m04 dim_date'[calendar_date]), COALESCE(COUNT('m04 fact_inventory_snapshots'[inventory_value_eur]), 0), BLANK())
+		formatString: 0
+		displayFolder: CH14\Berechnungen
+		lineageTag: 8b085062-72c7-5877-85d0-f503a07eb4eb
+
+	measure Bewertungsabdeckung = DIVIDE([Bewertete Bestandsbeobachtungen], [Bestandsbeobachtungen])
+		formatString: 0.00%
+		displayFolder: CH14\Berechnungen
+		lineageTag: e6a9a4ed-86ef-5762-bb40-e2173a6e4887
+
+	measure 'Bekannter Bestandswert' = IF(HASONEVALUE('m04 dim_date'[calendar_date]) && SELECTEDVALUE('m04 fact_inventory_snapshots'[currency]) = "EUR", SUM('m04 fact_inventory_snapshots'[inventory_value_eur]), BLANK())
+		formatString: #,0.00 "EUR"
+		displayFolder: CH14\Berechnungen
+		lineageTag: 075eb188-ea4f-5d99-bc2e-073b2ad4061e
+
+	measure 'Vollständiger Bestandswert' = IF([Bestandsbeobachtungen] > 0 && [Bewertete Bestandsbeobachtungen] = [Bestandsbeobachtungen], [Bekannter Bestandswert], BLANK())
+		formatString: #,0.00 "EUR"
+		displayFolder: CH14\Berechnungen
+		lineageTag: e6c5b27f-4a4f-593e-9f21-c3f383834fab
+
+	measure Bewertungsumfang = IF(ISBLANK([Bestandsbeobachtungen]), "Stichtag nicht eindeutig", IF([Bestandsbeobachtungen] = 0, "Keine Bestandsbeobachtung; Abdeckung nicht definiert", FORMAT([Bewertete Bestandsbeobachtungen], "0") & " von " & FORMAT([Bestandsbeobachtungen], "0") & " beobachteten Zeilen bewertet; " & IF([Bewertete Bestandsbeobachtungen] = [Bestandsbeobachtungen], "COMPLETE für beobachtete Auswahl", "LIMITED für beobachtete Auswahl")))
+		displayFolder: Reportdarstellung
+		lineageTag: e4abf24b-44dd-518c-ac74-212131917127
+
+	measure 'Bekannter Wert Anzeige' = IF(ISBLANK([Bekannter Bestandswert]), "Bekannter Wert: unbekannt", "Bekannter Wert: " & FORMAT([Bekannter Bestandswert], "#,0.00") & " EUR")
+		displayFolder: Reportdarstellung
+		lineageTag: 7b57127e-c825-5b1c-867b-505441cde1f5
+
+	measure 'Vollwert Anzeige' = IF(ISBLANK([Vollständiger Bestandswert]), "Vollständiger Wert: unbekannt", "Vollständiger Wert: " & FORMAT([Vollständiger Bestandswert], "#,0.00") & " EUR")
+		displayFolder: Reportdarstellung
+		lineageTag: 8d2d9c16-b59d-538c-b24d-f130f317a36b
+
+	measure 'Beobachtete Stück' = IF([Bestandsbeobachtungen] > 0, SUM('m04 fact_inventory_snapshots'[quantity]), BLANK())
+		displayFolder: Reportdarstellung
+		lineageTag: c94abf9e-32c5-5213-b46c-0cbba8cfd90a
+
+	measure 'Bewertung Detail' = IF([Bestandsbeobachtungen] > 0, IF([Bewertete Bestandsbeobachtungen] = [Bestandsbeobachtungen], "Bewertet: " & FORMAT([Bekannter Bestandswert], "#,0.00") & " EUR", "Preis fehlt; Wert unbekannt"), BLANK())
+		displayFolder: Reportdarstellung
+		lineageTag: 3eac86f5-2569-53fd-a1a6-1b12ee3527eb
+
+	column warehouse_id
+		dataType: string
+		lineageTag: 92b41555-9d58-47c7-9aa3-29c9e8491523
+		summarizeBy: none
+		sourceColumn: warehouse_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 02726f01-1a77-42a7-8b6e-8ddda4b4b3fc
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 86007baa-921c-42be-a57b-16b9fac0125f
+		summarizeBy: none
+		sourceColumn: snapshot_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 03c48b09-46a2-459f-a8a3-cb11d7637baa
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 96d59394-2c0a-4003-b46d-02a6f601585a
+		summarizeBy: none
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inventory_value_eur
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 9719e249-a141-4ff4-8c43-e6ec84cb0248
+		summarizeBy: sum
+		sourceColumn: inventory_value_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column currency
+		dataType: string
+		lineageTag: a74cf8b1-a52c-4a96-bad2-153cf8af6d48
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column inventory_price_missing
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c4750d68-077e-47a3-b654-07d18da20530
+		summarizeBy: none
+		sourceColumn: inventory_price_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 fact_inventory_snapshots' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database),
+				    Tabelle = Quelle{[Schema = "m04", Item = "fact_inventory_snapshots"]}[Data],
+				    Auswahl = Table.SelectColumns(Tabelle, {"warehouse_id", "product_id", "snapshot_date", "quantity", "price", "inventory_value_eur", "currency", "inventory_price_missing"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"warehouse_id", type text}, {"product_id", type text}, {"snapshot_date", type date}, {"quantity", Int64.Type}, {"price", Currency.Type}, {"inventory_value_eur", Currency.Type}, {"currency", type text}, {"inventory_price_missing", type logical}})
+				in
+				    Typen
+

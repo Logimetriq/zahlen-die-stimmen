@@ -1,0 +1,112 @@
+table 'm04 quality_status'
+	lineageTag: badcafac-8be0-4240-9017-5d835243b506
+
+	column data_state
+		dataType: string
+		lineageTag: c3ee44d7-5725-4c0d-9752-e3c4f24a56a7
+		summarizeBy: none
+		sourceColumn: data_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column knowledge_cutoff
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 483c1b86-478b-4775-b730-d95d61ae6086
+		summarizeBy: none
+		sourceColumn: knowledge_cutoff
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_id
+		dataType: string
+		lineageTag: 424de654-2a8b-43b2-976b-239bfd52d8bd
+		summarizeBy: none
+		sourceColumn: rule_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column checked_object
+		dataType: string
+		lineageTag: f65d3840-8b0f-4174-850a-095b8866172f
+		summarizeBy: none
+		sourceColumn: checked_object
+
+		annotation SummarizationSetBy = Automatic
+
+	column warehouse_id
+		dataType: string
+		lineageTag: 4ca64760-e8d2-4d41-b140-2d3919742c8c
+		summarizeBy: none
+		sourceColumn: warehouse_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column population
+		dataType: string
+		lineageTag: 15590eb4-7b2f-4dbc-9c5f-1fb03716fe46
+		summarizeBy: none
+		sourceColumn: population
+
+		annotation SummarizationSetBy = Automatic
+
+	column checked_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: f2b0b0e2-c68d-4aef-b6f2-23c3a01fd331
+		summarizeBy: sum
+		sourceColumn: checked_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 357a44c0-70ea-4115-816f-eaf2e4b1bba1
+		summarizeBy: sum
+		sourceColumn: missing_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 35d0b931-d72e-461a-8bd8-b12cdb13de0c
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 46df68e3-26e1-4b11-9f2d-fc3903244163
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner
+		dataType: string
+		lineageTag: 244f1db9-41b6-4089-9edb-e295dd609dd8
+		summarizeBy: none
+		sourceColumn: owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned_reaction
+		dataType: string
+		lineageTag: 1a248717-29a2-48f4-ab38-6734d5645d18
+		summarizeBy: none
+		sourceColumn: planned_reaction
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 quality_status' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database, [Query = "SELECT data_state, knowledge_cutoff AT TIME ZONE 'UTC' AS knowledge_cutoff, rule_id, checked_object, warehouse_id, population, checked_denominator, missing_count, severity, status, owner, planned_reaction FROM m04.quality_status"]),
+				    Auswahl = Table.SelectColumns(Quelle, {"data_state", "knowledge_cutoff", "rule_id", "checked_object", "warehouse_id", "population", "checked_denominator", "missing_count", "severity", "status", "owner", "planned_reaction"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"data_state", type text}, {"knowledge_cutoff", type datetime}, {"rule_id", type text}, {"checked_object", type text}, {"warehouse_id", type text}, {"population", type text}, {"checked_denominator", Int64.Type}, {"missing_count", Int64.Type}, {"severity", type text}, {"status", type text}, {"owner", type text}, {"planned_reaction", type text}})
+				in
+				    Typen
+

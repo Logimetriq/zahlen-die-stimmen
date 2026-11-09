@@ -1,0 +1,27 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: de-DE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["m04 dim_customer","m04 dim_date","m04 dim_product","m04 dim_warehouse","m04 fact_inventory_snapshots","m04 fact_orders","m04 quality_status","Server","Database"]
+
+ref table 'm04 dim_customer'
+ref table 'm04 dim_date'
+ref table 'm04 dim_product'
+ref table 'm04 dim_warehouse'
+ref table 'm04 fact_inventory_snapshots'
+ref table 'm04 fact_orders'
+ref table 'm04 quality_status'
+
+ref role OPS_ALL
+ref role OPS_FRANKFURT
+
+ref cultureInfo de-DE
+

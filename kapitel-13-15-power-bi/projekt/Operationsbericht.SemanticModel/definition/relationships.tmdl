@@ -1,0 +1,33 @@
+relationship b9fe9bfa-db87-5294-a103-c299b7ce25ca
+	fromColumn: 'm04 fact_orders'.product_id
+	toColumn: 'm04 dim_product'.product_id
+
+relationship acf78065-5dfc-548d-87be-05413e6de968
+	fromColumn: 'm04 fact_inventory_snapshots'.product_id
+	toColumn: 'm04 dim_product'.product_id
+
+relationship 33dc866a-10dc-5d30-b45d-93436c671b5e
+	fromColumn: 'm04 fact_orders'.warehouse_id
+	toColumn: 'm04 dim_warehouse'.warehouse_id
+
+relationship a9c1bdb0-1c33-5567-9f0f-d54d599bb296
+	fromColumn: 'm04 fact_inventory_snapshots'.warehouse_id
+	toColumn: 'm04 dim_warehouse'.warehouse_id
+
+relationship 4a457994-34dc-5b95-98fc-676c05ef075e
+	fromColumn: 'm04 fact_orders'.customer_id
+	toColumn: 'm04 dim_customer'.customer_id
+
+relationship 75058ef0-aeb3-50e3-885a-5d66ca9b27c3
+	fromColumn: 'm04 fact_orders'.received_date
+	toColumn: 'm04 dim_date'.calendar_date
+
+relationship 80d2db34-ed22-5671-9ee3-44f559a02191
+	isActive: false
+	fromColumn: 'm04 fact_orders'.processed_date
+	toColumn: 'm04 dim_date'.calendar_date
+
+relationship 6f886680-f48c-59f6-b670-55894be35ae7
+	fromColumn: 'm04 fact_inventory_snapshots'.snapshot_date
+	toColumn: 'm04 dim_date'.calendar_date
+

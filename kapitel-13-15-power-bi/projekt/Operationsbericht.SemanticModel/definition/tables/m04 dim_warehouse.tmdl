@@ -1,0 +1,30 @@
+table 'm04 dim_warehouse'
+	lineageTag: 8584a756-a897-4ef7-b1f2-70ccca15e646
+
+	column warehouse_id
+		dataType: string
+		lineageTag: 57fd6582-ae37-4bde-a9c1-2156df0f33b8
+		summarizeBy: none
+		sourceColumn: warehouse_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column warehouse_name
+		dataType: string
+		lineageTag: b0b5fd91-c0d3-4a3c-830c-8cd33e6287a7
+		summarizeBy: none
+		sourceColumn: warehouse_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 dim_warehouse' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database),
+				    Tabelle = Quelle{[Schema = "m04", Item = "dim_warehouse"]}[Data],
+				    Auswahl = Table.SelectColumns(Tabelle, {"warehouse_id", "warehouse_name"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"warehouse_id", type text}, {"warehouse_name", type text}})
+				in
+				    Typen
+

@@ -1,0 +1,6 @@
+// Kapitel 14 · Abschnitt „CALCULATE: den Filter für eine konkrete Frage ändern“ · Codeblock 3
+
+CALCULATE(
+    COUNT('m04 fact_orders'[duration_min]),
+    'm04 fact_orders'[duration_min] > 60
+)

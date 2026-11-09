@@ -1,0 +1,10 @@
+// Kapitel 14 · Abschnitt „Measures unabhängig prüfen und Aufwand gezielt untersuchen“ · Codeblock 18
+
+EVALUATE
+ROW(
+    "Gruppenmittel", AVERAGEX(
+        VALUES('m04 dim_product'[product_id]),
+        [Mittlere Bearbeitungsdauer]
+    ),
+    "Measure", [Mittlere Bearbeitungsdauer]
+)

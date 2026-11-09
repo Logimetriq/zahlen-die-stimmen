@@ -1,0 +1,8 @@
+// Kapitel 14 · Abschnitt „BLANK, Bewertungsabdeckung und vollständiger Bestandswert“ · Codeblock 12
+
+Bestandsbeobachtungen =
+IF(
+    HASONEVALUE('m04 dim_date'[calendar_date]),
+    COALESCE(COUNTROWS('m04 fact_inventory_snapshots'), 0),
+    BLANK()
+)

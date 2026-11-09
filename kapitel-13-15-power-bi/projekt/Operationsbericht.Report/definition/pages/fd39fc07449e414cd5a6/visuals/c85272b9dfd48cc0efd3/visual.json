@@ -1,0 +1,176 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "c85272b9dfd48cc0efd3",
+  "position": {
+    "x": 20,
+    "y": 280,
+    "z": 0,
+    "height": 160,
+    "width": 1400,
+    "tabOrder": 2820
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Bestellanzahl"
+                }
+              },
+              "queryRef": "m04 fact_orders.Bestellanzahl",
+              "nativeQueryRef": "Bestellanzahl",
+              "displayName": "Bestellanzahl"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Bestellbetrag"
+                }
+              },
+              "queryRef": "m04 fact_orders.Bestellbetrag",
+              "nativeQueryRef": "Bestellbetrag",
+              "displayName": "Bestellbetrag"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Mittlere Bearbeitungsdauer"
+                }
+              },
+              "queryRef": "m04 fact_orders.Mittlere Bearbeitungsdauer",
+              "nativeQueryRef": "Mittlere Bearbeitungsdauer",
+              "displayName": "Mittlere Bearbeitungsdauer"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_orders"
+                    }
+                  },
+                  "Property": "Verzögerungsquote"
+                }
+              },
+              "queryRef": "m04 fact_orders.Verzögerungsquote",
+              "nativeQueryRef": "Verzögerungsquote",
+              "displayName": "Verzögerungsquote"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "m04 fact_inventory_snapshots"
+                    }
+                  },
+                  "Property": "Bewertungsabdeckung"
+                }
+              },
+              "queryRef": "m04 fact_inventory_snapshots.Bewertungsabdeckung",
+              "nativeQueryRef": "Bewertungsabdeckung",
+              "displayName": "Bewertungsabdeckung"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Operations – Bestellungen des 14.09.2026'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

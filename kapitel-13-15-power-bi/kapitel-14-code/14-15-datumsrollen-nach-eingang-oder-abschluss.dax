@@ -1,0 +1,10 @@
+// Kapitel 14 · Abschnitt „Datumsrollen: nach Eingang oder Abschluss rechnen“ · Codeblock 15
+
+Bestellbetrag nach Abschluss =
+CALCULATE(
+    [Bestellbetrag],
+    USERELATIONSHIP(
+        'm04 fact_orders'[processed_date],
+        'm04 dim_date'[calendar_date]
+    )
+)

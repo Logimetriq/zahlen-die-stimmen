@@ -1,0 +1,30 @@
+table 'm04 dim_product'
+	lineageTag: 2ebcbdd0-7c46-4e5f-ac89-638bf871bd64
+
+	column product_id
+		dataType: string
+		lineageTag: 4c02a4a2-1e81-4345-98fc-d35684674809
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 229f0bc8-9ca6-4616-adba-c1aef61c9548
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 dim_product' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database),
+				    Produkte = Quelle{[Schema = "m04", Item = "dim_product"]}[Data],
+				    Auswahl = Table.SelectColumns(Produkte, {"product_id", "product_name"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"product_id", type text}, {"product_name", type text}})
+				in
+				    Typen
+

@@ -1,0 +1,326 @@
+cultureInfo de-DE
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "m04_fact_orders.bestellanzahl": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "Bestellanzahl"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bestellanzahl": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_orders.bestellbetrag": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "Bestellbetrag"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bestellbetrag": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_orders.mittlere_bearbeitungsdauer": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "Mittlere Bearbeitungsdauer"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mittlere Bearbeitungsdauer": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_orders.verzögerungsquote": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "Verzögerungsquote"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Verzögerungsquote": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_orders.order_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "order_id"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bestellung": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_orders.reportstand": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_orders",
+			          "ConceptualProperty": "Reportstand"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Reportstand": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.bewertungsabdeckung": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Bewertungsabdeckung"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bewertungsabdeckung": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.beobachtete_stück": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Beobachtete Stück"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Stück": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.bewertung_detail": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Bewertung Detail"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bewertung": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.bewertungsumfang": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Bewertungsumfang"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bewertungsumfang": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.bekannter_wert_anzeige": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Bekannter Wert Anzeige"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bekannter Wert Anzeige": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_fact_inventory_snapshots.vollwert_anzeige": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 fact_inventory_snapshots",
+			          "ConceptualProperty": "Vollwert Anzeige"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Vollwert Anzeige": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_dim_customer.customer_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 dim_customer",
+			          "ConceptualProperty": "customer_name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Kunde – filtert nur Bestellungen": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_dim_warehouse.warehouse_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 dim_warehouse",
+			          "ConceptualProperty": "warehouse_name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Lager": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "m04_dim_product.product_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "m04 dim_product",
+			          "ConceptualProperty": "product_name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Produkt": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

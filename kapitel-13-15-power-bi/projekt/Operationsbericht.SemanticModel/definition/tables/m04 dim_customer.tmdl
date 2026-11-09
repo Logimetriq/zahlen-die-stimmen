@@ -1,0 +1,30 @@
+table 'm04 dim_customer'
+	lineageTag: 07453338-3e32-4d7d-9787-b5de67ce58ea
+
+	column customer_id
+		dataType: string
+		lineageTag: 90898c70-6831-4673-9cee-e8b986933690
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: e7100e45-8553-41a9-8219-e1f411a1611e
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'm04 dim_customer' = m
+		mode: import
+		source =
+				let
+				    Quelle = PostgreSQL.Database(Server, Database),
+				    Tabelle = Quelle{[Schema = "m04", Item = "dim_customer"]}[Data],
+				    Auswahl = Table.SelectColumns(Tabelle, {"customer_id", "customer_name"}),
+				    Typen = Table.TransformColumnTypes(Auswahl, {{"customer_id", type text}, {"customer_name", type text}})
+				in
+				    Typen
+
