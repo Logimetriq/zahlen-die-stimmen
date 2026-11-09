@@ -1,0 +1,5 @@
+observation_id,revision_id,available_at,value,delivery_id
+O1,1,2026-09-14T08:00:00Z,10.00,D01
+O1,1,2026-09-14T08:00:00Z,10.00,D02
+O1,2,2026-09-15T10:00:00Z,12.00,D03
+O2,1,2026-09-14T08:00:00Z,20.00,D04

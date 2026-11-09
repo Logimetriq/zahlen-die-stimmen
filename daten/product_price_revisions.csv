@@ -1,0 +1,3 @@
+product_id,price_date,currency,revision_id,available_at,price
+201,2026-09-14,EUR,1,2026-09-14T18:00:00Z,100.00
+202,2026-09-14,EUR,1,2026-09-15T10:00:00Z,200.00
