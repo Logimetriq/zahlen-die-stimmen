@@ -1,0 +1,7 @@
+{
+  "input_dir": "../daten",
+  "orders_file": "../kapitel-07-python-import/orders.csv",
+  "output_dir": "outputs/lauf-1",
+  "cutoff": "2026-09-15T06:00:00Z",
+  "currency": "EUR"
+}
